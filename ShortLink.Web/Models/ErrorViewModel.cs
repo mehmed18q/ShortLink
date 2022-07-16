@@ -1,3 +1,5 @@
+using System;
+
 namespace ShortLink.Web.Models
 {
     public class ErrorViewModel

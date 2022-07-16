@@ -4,8 +4,8 @@ namespace ShortLink.Application.DTOs.Link
 {
     public class UrlRequestDTO
     {
-        [Display(Name = "Base URL")]
-        [Required(ErrorMessage = "Please enter {0}")]
+        [Display(Name = "url اصلی")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public string OrginalUrl { get; set; }
     }
     public enum UrlRequestResult

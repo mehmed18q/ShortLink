@@ -26,12 +26,12 @@ namespace ShortLink.Web.Middelware
             var userAgent = StringValues.Empty;
             httpContext.Request.Headers.TryGetValue("User-Agent", out userAgent);
 
-            if (httpContext.Request.Path.ToString().Length == 9)
+            if(httpContext.Request.Path.ToString().Length == 9)
             {
                 await _linkService.AddUserAgent(userAgent);
                 var token = httpContext.Request.Path.ToString().Substring(1);
                 var shortUrl = await _linkService.FindUrlByToken(token);
-                if (shortUrl != null)
+                if(shortUrl != null)
                 {
                     httpContext.Response.Redirect(shortUrl.OrginalUrl.ToString());
                 }

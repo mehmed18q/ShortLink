@@ -15,7 +15,6 @@ namespace ShortLink.Web.Controllers
             _linkService = linkService;
         }
         #endregion
-        
         public IActionResult Index()
         {
             return View();
@@ -35,20 +34,22 @@ namespace ShortLink.Web.Controllers
                     switch (result)
                     {
                         case UrlRequestResult.Error:
-                            TempData[ErrorMessage] = "A problem has occurred";
+                            TempData[ErrorMessage] = "A Problem Has Occurred";
                             break;
                         case UrlRequestResult.Success:
-                            TempData[SuccessMessage] = "Your link has been shortened successfully";
+                            TempData[SuccessMessage] = "Your Link Successful Shorting";
                             ViewBag.isSuccess = true;
                             ViewBag.UserShortLink = shortUrl.Value.ToString();
                             break;
                     }
+
                 }
                 else
                 {
-                    TempData[ErrorMessage] = "Please enter the link with HTTPs or HTTP";
+                    TempData[ErrorMessage] = "If You Dont Uss Http Or Https In Your Link Please Use Them";
                     return View(urlRequest);
                 }
+
             }
 
             return View(urlRequest);

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Collections.Generic;
 using System.Security.Claims;
 
+
 namespace ShortLink.Web.Controllers
 {
     public class AccountController : SiteBaseController
@@ -23,6 +24,7 @@ namespace ShortLink.Web.Controllers
         [HttpGet("register")]
         public async Task<IActionResult> Register()
         {
+
             return View();
         }
 
@@ -35,11 +37,11 @@ namespace ShortLink.Web.Controllers
                 switch (result)
                 {
                     case RegisterUserResult.IsMobileExist:
-                        TempData[ErrorMessage] = "The entered mobile phone number is duplicate";
-                        ModelState.AddModelError("Mobile", "The entered mobile phone number is duplicate");
+                        TempData[ErrorMessage] = "The Phone Number Is Dupliceate";
+                        ModelState.AddModelError("Mobile", "The Phone Number Is Dupliceate");
                         break;
                     case RegisterUserResult.Success:
-                        TempData[SuccessMessage] = "Registration was successful";
+                        TempData[SuccessMessage] = "Your Registertion Is Successful";
                         return Redirect("/");
                 }
             }
@@ -66,7 +68,7 @@ namespace ShortLink.Web.Controllers
                         TempData[ErrorMessage] = "User Not Found";
                         break;
                     case LoginUserResult.NotActivate:
-                        TempData[WarningMessage] = "This User Isn't Active";
+                        TempData[WarningMessage] = "This User Is Not Active";
                         break;
                     case LoginUserResult.Success:
                         var user = await _userService.GetUserByMobile(loginUser.Mobile);
@@ -74,7 +76,7 @@ namespace ShortLink.Web.Controllers
                         {
                             new Claim(ClaimTypes.Name,user.Mobile),
                             new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
-                            new Claim("IsAdmin", user.IsAdmin.ToString())
+                            new Claim("IsAdmin",user.IsAdmin.ToString())
                         };
                         var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                         var principle = new ClaimsPrincipal(identity);
@@ -96,7 +98,7 @@ namespace ShortLink.Web.Controllers
         public async Task<IActionResult> LogOut()
         {
             await HttpContext.SignOutAsync();
-            TempData[SuccessMessage] = "You Logouted";
+            TempData[SuccessMessage] = "Your Account LogOut Now";
             return Redirect("/");
         }
         #endregion

@@ -1,26 +1,24 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-
 namespace ShortLink.Domain.ViewModels.Account
 {
-    public class UserShowViewModel
+    public class UserForShowViewModel
     {
-        [Display(Name = "User ID")]
-        public long UserID { get; set; }
+        public long UserId { get; set; }
 
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
-
-        [Display(Name = "Last Name")]
-        public string LastName { get; set; }
-
-        [Display(Name = "Phone Number")]
+        [Display(Name = "تلفن همراه")]
         public string Mobile { get; set; }
 
-        [Display(Name = "Is Blocked")]
+        [Display(Name = "نام")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "نام خانوادگی")]
+        public string LastName { get; set; }
+
+        [Display(Name = "بلاک شده / نشده")]
         public bool IsBlocked { get; set; }
 
-        [Display(Name = "Is Admin")]
+        [Display(Name = "ادمین هست / نیست")]
         public bool IsAdmin { get; set; }
     }
 }
