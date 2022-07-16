@@ -11,6 +11,6 @@ namespace ShortLink.Application.Interfaces
         Task<RegisterUserResult> RegisterUser(RegisterUserDTO registerUser);
         Task<LoginUserResult> LoginUser(LoginUserDTO loginUser);
         Task<User> GetUserByMobile(string mobile);
-        Task<List<UserShowViewModel>> GetAllUserShow();
+        Task<List<UserForShowViewModel>> GetAllUserForShow();
     }
 }

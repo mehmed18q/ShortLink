@@ -5,37 +5,37 @@ namespace ShortLink.Domain.Models.Account
 {
     public class User : BaseEntity
     {
-        [Display(Name = "Phone Number")]
-        [Required(ErrorMessage = "Please enter {0}")]
-        [MaxLength(200, ErrorMessage = "{0} cannot be more than {1} characters")]
+        [Display(Name = "تلفن همراه")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
         public string Mobile { get; set; }
 
-        [Display(Name = "First Name")]
-        [Required(ErrorMessage = "Please enter {0}")]
-        [MaxLength(200, ErrorMessage = "{0} cannot be more than {1} characters")]
+        [Display(Name = "نام")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
         public string FirstName { get; set; }
 
-        [Display(Name = "Last Name")]
-        [Required(ErrorMessage = "Please enter {0}")]
-        [MaxLength(200, ErrorMessage = "{0} cannot be more than {1} characters")]
+        [Display(Name = "نام خانوادگی")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
         public string LastName { get; set; }
 
-        [Display(Name = "Password")]
-        [Required(ErrorMessage = "Please enter {0}")]
-        [MaxLength(200, ErrorMessage = "{0} cannot be more than {1} characters")]
+        [Display(Name = "کلمه ی عبور")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Please enter {0}")]
-        [MaxLength(20, ErrorMessage = "{0} cannot be more than {1} characters")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [MaxLength(20, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
         public string MobileActiveCode { get; set; }
 
-        [Display(Name = "Mobile is Active")]
+        [Display(Name = "موبایل فعال / غیر فعال")]
         public bool IsMobileActive { get; set; }
 
-        [Display(Name = "Is Blocked")]
+        [Display(Name = "بلاک شده / نشده")]
         public bool IsBlocked { get; set; }
 
-        [Display(Name = "Is Admin")]
+        [Display(Name = "ادمین هست / نیست")]
         public bool IsAdmin { get; set; }
     }
 }

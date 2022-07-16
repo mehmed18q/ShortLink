@@ -7,7 +7,10 @@ namespace ShortLink.Infra.Data.Context
 {
     public class ShortLinkContext : DbContext
     {
-        public ShortLinkContext(DbContextOptions<ShortLinkContext> options) : base(options) { }
+        public ShortLinkContext(DbContextOptions<ShortLinkContext> options) : base(options)
+        {
+
+        }
 
         #region account
         public DbSet<User> Users { get; set; }

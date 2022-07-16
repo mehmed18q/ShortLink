@@ -6,7 +6,7 @@ namespace ShortLink.Web.Areas.Admin.Controllers
 {
     public class AccountController : AdminBaseController
     {
-        #region Constractor
+        #region constractor
         private readonly IUserService _userService;
         public AccountController(IUserService userService)
         {
@@ -14,11 +14,11 @@ namespace ShortLink.Web.Areas.Admin.Controllers
         }
         #endregion
 
-        #region User List
+        #region user list
         [HttpGet("user-list")]
         public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _userService.GetAllUserForShow());
         }
         #endregion
     }

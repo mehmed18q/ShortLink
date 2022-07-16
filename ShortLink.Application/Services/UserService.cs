@@ -39,7 +39,7 @@ namespace ShortLink.Application.Services
                 };
                 await _userRepository.AddUser(user);
                 await _userRepository.SaveChange();
-                //ToDo: send SMS
+                //todo : Send sms
                 return RegisterUserResult.Success;
             }
             return RegisterUserResult.IsMobileExist;
@@ -60,9 +60,9 @@ namespace ShortLink.Application.Services
             return await _userRepository.GetUserByMobile(mobile);
         }
 
-        public async Task<List<UserShowViewModel>> GetAllUserShow()
+        public async Task<List<UserForShowViewModel>> GetAllUserForShow()
         {
-            return await _userRepository.GetAllUserShow();
+            return await _userRepository.GetAllUserForShow();
         }
         #endregion
     }

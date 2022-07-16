@@ -1,23 +1,24 @@
 ﻿using ShortLink.Domain.Models.Common;
 using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
 
 namespace ShortLink.Domain.Models.Link
 {
     public class Os : BaseEntity
     {
         [Display(Name = "")]
-        [Required(ErrorMessage = "Please enter {0}")]
-        [MaxLength(200, ErrorMessage = "{0} cannot be more than {1} characters")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
         public string Family { get; set; }
 
         [Display(Name = "")]
-        [Required(ErrorMessage = "Please enter {0}")]
-        [MaxLength(200, ErrorMessage = "{0} cannot be more than {1} characters")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
         public string Major { get; set; }
 
         [Display(Name = "")]
-        [Required(ErrorMessage = "Please enter {0}")]
-        [MaxLength(200, ErrorMessage = "{0} cannot be more than {1} characters")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
         public string Minor { get; set; }
     }
 }
