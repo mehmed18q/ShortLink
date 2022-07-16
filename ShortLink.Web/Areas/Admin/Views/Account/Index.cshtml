@@ -1,0 +1,53 @@
+﻿@using ShortLink.Domain.ViewModels.Account;
+
+@model List<UserShowViewModel>
+@{
+    ViewData["Title"] = "User List";
+}
+
+<h1>User List</h1>
+
+@if (Model.Any() && Model != null)
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Mobile</th>
+                <th>Is Admin</th>
+                <th>Is Blocked</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.UserID</td>
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
+                    <td>@user.Mobile</td>
+                    <td>
+                        @if (user.IsAdmin)
+                        {
+                            <p class=text-success>Admin</p>
+                        }
+                    </td>
+                    <td>
+                        @if (user.IsBlocked)
+                        {
+                            <p class=text-danger>Blocked</p>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class"alert alert-info">
+        <p>User Not Found</p>
+    </div>
+}
