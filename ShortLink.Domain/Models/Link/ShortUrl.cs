@@ -17,7 +17,7 @@ namespace ShortLink.Domain.Models.Link
         [MaxLength(400, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
         public Uri Value { get; set; }
 
-        [Display(Name = "نوکن")]
+        [Display(Name = "توکن")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(40, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
         public string Token { get; set; }

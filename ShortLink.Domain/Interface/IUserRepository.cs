@@ -12,6 +12,8 @@ namespace ShortLink.Domain.Interface
         Task<bool> IsExistMobile(string mobile);
         Task<User> GetUserByMobile(string mobile);
         Task<List<UserForShowViewModel>> GetAllUserForShow();
+        Task<User> GetUserById(long userId);
+        void UpdateUser(User user);
         Task SaveChange();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ShortLink.Application.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,9 +7,16 @@ namespace ShortLink.Web.Areas.Admin.Controllers
 {
     public class HomeController : AdminBaseController
     {
-        public IActionResult Index()
+        #region constractor
+        private readonly ILinkService _linkService;
+        public HomeController(ILinkService linkService)
         {
-            return View();
+            _linkService = linkService;
+        }
+        #endregion
+        public async Task<IActionResult> Index()
+        {
+            return View(await _linkService.GetAllLink());
         }
     }
 }
