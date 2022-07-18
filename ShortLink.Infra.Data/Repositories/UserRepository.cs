@@ -48,6 +48,15 @@ namespace ShortLink.Infra.Data.Repositories
 
             return allUser;
         }
+        public async Task<User> GetUserById(long userId)
+        {
+            return await _context.Users.AsQueryable()
+                .SingleOrDefaultAsync(u => u.Id == userId);
+        }
+        public void UpdateUser(User user)
+        {
+            _context.Users.Update(user);
+        }
         #endregion
 
         #region dispose & save change

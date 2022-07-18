@@ -24,11 +24,11 @@ namespace ShortLink.Web.Controllers
         [HttpGet("register")]
         public async Task<IActionResult> Register()
         {
-
+           
             return View();
         }
 
-        [HttpPost("register"), ValidateAntiForgeryToken]
+        [HttpPost("register"),ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterUserDTO registerUser)
         {
             if (ModelState.IsValid)
@@ -56,7 +56,7 @@ namespace ShortLink.Web.Controllers
             return View();
         }
 
-        [HttpPost("login"), ValidateAntiForgeryToken]
+        [HttpPost("login"),ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginUserDTO loginUser)
         {
             if (ModelState.IsValid)

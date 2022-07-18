@@ -3,7 +3,9 @@ using ShortLink.Application.Generetor;
 using ShortLink.Application.Interfaces;
 using ShortLink.Domain.Interface;
 using ShortLink.Domain.Models.Link;
+using ShortLink.Domain.ViewModels.Link;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UAParser;
 
@@ -81,6 +83,30 @@ namespace ShortLink.Application.Services
         {
             return await _linkRepository.FindUrlByToken(token);
         }
+
+        public async Task AddRequestUrl(string token)
+        {
+            var shortUrl = await _linkRepository.FindUrlByToken(token);
+            if (shortUrl != null)
+            {
+                var requestUrl = new RequestUrl
+                {
+                    ShortUrlId = shortUrl.Id,
+                    RequestDataTime = DateTime.Now,
+                    CreateDate = DateTime.Now
+                };
+                await _linkRepository.AddRequsetUrl(requestUrl);
+                await _linkRepository.SaveChange();
+
+            }
+        }
+
+        public async Task<List<AllLinkViewModel>> GetAllLink()
+        {
+            return await _linkRepository.GetAllLink();
+        }
+
+
         #endregion
     }
 }

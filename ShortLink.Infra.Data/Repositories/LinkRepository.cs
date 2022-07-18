@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShortLink.Domain.Interface;
 using ShortLink.Domain.Models.Link;
+using ShortLink.Domain.ViewModels.Link;
 using ShortLink.Infra.Data.Context;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -41,6 +43,22 @@ namespace ShortLink.Infra.Data.Repositories
         public async Task<ShortUrl> FindUrlByToken(string token)
         {
             return await _context.ShortUrls.AsQueryable().SingleOrDefaultAsync(u => u.Token == token);
+        }
+        public async Task AddRequsetUrl(RequestUrl requestUrl)
+        {
+            await _context.RequestUrls.AddAsync(requestUrl);
+        }
+
+        public async Task<List<AllLinkViewModel>> GetAllLink()
+        {
+            return await _context.ShortUrls.AsQueryable()
+                .Select(c => new AllLinkViewModel
+                {
+                    OrginalUrl = c.OrginalUrl.ToString(),
+                    Token = c.Token.ToString(),
+                    CreateDate = c.CreateDate,
+                    Value = c.Value.ToString()
+                }).ToListAsync();
         }
         #endregion
 

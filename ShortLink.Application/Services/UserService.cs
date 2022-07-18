@@ -64,6 +64,59 @@ namespace ShortLink.Application.Services
         {
             return await _userRepository.GetAllUserForShow();
         }
+
+        public async Task<EditUserResult> EditUser(EditUserDTO editUser)
+        {
+            var user = await _userRepository.GetUserById(editUser.UserId);
+            if (user == null) return EditUserResult.NotFound;
+
+            user.FirstName = editUser.FirstName;
+            user.LastName = editUser.LastName;
+            user.IsAdmin = editUser.IsAdmin;
+            user.IsBlocked = editUser.IsBlocked;
+
+            _userRepository.UpdateUser(user);
+            await _userRepository.SaveChange();
+            return EditUserResult.Success;
+        }
+
+        public async Task<EditUserDTO> GetEditUserByAdmin(long userId)
+        {
+            var user = await _userRepository.GetUserById(userId);
+
+            return new EditUserDTO
+            {
+                UserId = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Mobile = user.Mobile,
+                IsAdmin = user.IsAdmin,
+                IsBlocked = user.IsBlocked
+            };
+        }
+
+        public async Task<CreateUserResult> AddUser(CreateUserDTO createUser)
+        {
+            if (!await _userRepository.IsExistMobile(createUser.Mobile))
+            {
+                var user = new User
+                {
+                    FirstName = createUser.FirstName,
+                    LastName = createUser.LastName,
+                    Password = _passwordHelper.EncodePasswordMd5(createUser.Password),
+                    Mobile = createUser.Mobile,
+                    MobileActiveCode = new Random().Next(10000, 9999999).ToString(),
+                    CreateDate = DateTime.Now,
+                    LastUpdateDate = DateTime.Now,
+                    IsAdmin = createUser.IsAdmin,
+
+                };
+                await _userRepository.AddUser(user);
+                await _userRepository.SaveChange();
+                return CreateUserResult.Success;
+            }
+            return CreateUserResult.Error;
+        }
         #endregion
     }
 }
