@@ -1,4 +1,5 @@
 ﻿@model ShortLink.Application.DTOs.Account.RegisterUserDTO
+
 @{
     ViewData["Title"] = "Register";
 }
@@ -36,8 +37,6 @@
                                 <input type="password" asp-for="RePassword" class="form-control">
                                 <span class="text-danger" asp-validation-for="RePassword"></span>
                             </div>
-                            
-
                             <div class="form-group m-0">
                                 <button type="submit" class="btn btn-primary btn-block">
                                     Register
@@ -50,4 +49,3 @@
         </div>
     </div>
 </section>
-

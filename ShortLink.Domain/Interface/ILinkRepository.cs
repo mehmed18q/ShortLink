@@ -17,6 +17,7 @@ namespace ShortLink.Domain.Interface
         Task AddRequsetUrl(RequestUrl requestUrl);
         Task<List<AllLinkViewModel>> GetAllLink();
         #endregion
+
         Task SaveChange();
     }
 }

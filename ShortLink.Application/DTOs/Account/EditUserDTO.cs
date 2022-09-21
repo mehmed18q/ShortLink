@@ -25,6 +25,7 @@ namespace ShortLink.Application.DTOs.Account
         [Display(Name = "ادمین هست / نیست")]
         public bool IsAdmin { get; set; }
     }
+
     public enum EditUserResult
     {
         NotFound,

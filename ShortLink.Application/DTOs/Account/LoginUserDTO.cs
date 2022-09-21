@@ -16,6 +16,7 @@ namespace ShortLink.Application.DTOs.Account
 
         public bool RememberMe { get; set; }
     }
+
     public enum LoginUserResult
     {
         NotFound,

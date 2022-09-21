@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -6,13 +7,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ShortLink.Infra.Data.Context;
 using ShortLink.Infra.IoC;
+using ShortLink.Web.Middelware;
+using System;
+using System.Security.Claims;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
-using ShortLink.Web.Middelware;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using System;
-using Microsoft.Extensions.Primitives;
-using System.Security.Claims;
 
 namespace ShortLink.Web
 {
@@ -30,6 +29,7 @@ namespace ShortLink.Web
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddMvc();
+
             #region IoC
             RegisterService(services);
             services.AddSingleton<HtmlEncoder>(HtmlEncoder.Create(allowedRanges: new[] {
@@ -58,7 +58,6 @@ namespace ShortLink.Web
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(43200);
             });
             #endregion
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -72,6 +71,7 @@ namespace ShortLink.Web
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -93,8 +93,6 @@ namespace ShortLink.Web
                         context.Response.Redirect("/login");
                     }
                 }
-
-
                 await next.Invoke();
             });
 
@@ -110,6 +108,7 @@ namespace ShortLink.Web
                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
             });
         }
+
         #region IoC
         public static void RegisterService(IServiceCollection services)
         {

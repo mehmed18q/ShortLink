@@ -1,7 +1,6 @@
 ﻿using ShortLink.Domain.Models.Common;
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 
 namespace ShortLink.Domain.Models.Link
 {

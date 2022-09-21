@@ -24,10 +24,10 @@ namespace ShortLink.Application.DTOs.Account
         [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
         public string Password { get; set; }
 
-
         [Display(Name = "ادمین هست / نیست")]
         public bool IsAdmin { get; set; }
     }
+
     public enum CreateUserResult
     {
         Success,

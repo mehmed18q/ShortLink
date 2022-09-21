@@ -17,7 +17,6 @@ namespace ShortLink.Infra.Data.Repositories
         {
             _context = context;
         }
-
         #endregion
 
         #region account
@@ -29,10 +28,12 @@ namespace ShortLink.Infra.Data.Repositories
         {
             return await _context.Users.AnyAsync(u => u.Mobile == mobile);
         }
+
         public async Task<User> GetUserByMobile(string mobile)
         {
             return await _context.Users.SingleOrDefaultAsync(u => u.Mobile == mobile);
         }
+
         public async Task<List<UserForShowViewModel>> GetAllUserForShow()
         {
             var allUser = await _context.Users.AsQueryable()
@@ -48,11 +49,13 @@ namespace ShortLink.Infra.Data.Repositories
 
             return allUser;
         }
+
         public async Task<User> GetUserById(long userId)
         {
             return await _context.Users.AsQueryable()
                 .SingleOrDefaultAsync(u => u.Id == userId);
         }
+
         public void UpdateUser(User user)
         {
             _context.Users.Update(user);
@@ -69,8 +72,6 @@ namespace ShortLink.Infra.Data.Repositories
         {
             await _context.SaveChangesAsync();
         }
-
-
         #endregion
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShortLink.Application.Interfaces;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ShortLink.Web.Areas.Admin.Controllers
@@ -14,6 +13,7 @@ namespace ShortLink.Web.Areas.Admin.Controllers
             _linkService = linkService;
         }
         #endregion
+
         public async Task<IActionResult> Index()
         {
             return View(await _linkService.GetAllLink());

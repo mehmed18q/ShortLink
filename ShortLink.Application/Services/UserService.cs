@@ -38,7 +38,7 @@ namespace ShortLink.Application.Services
                     IsAdmin = false
                 };
                 await _userRepository.AddUser(user);
-                await _userRepository.SaveChange();
+                //await _userRepository.SaveChange();
                 //todo : Send sms
                 return RegisterUserResult.Success;
             }
@@ -76,7 +76,7 @@ namespace ShortLink.Application.Services
             user.IsBlocked = editUser.IsBlocked;
 
             _userRepository.UpdateUser(user);
-            await _userRepository.SaveChange();
+            //await _userRepository.SaveChange();
             return EditUserResult.Success;
         }
 

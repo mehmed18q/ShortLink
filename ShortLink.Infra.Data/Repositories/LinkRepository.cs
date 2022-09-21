@@ -17,7 +17,6 @@ namespace ShortLink.Infra.Data.Repositories
         {
             _context = context;
         }
-
         #endregion
 
         #region link
@@ -40,10 +39,12 @@ namespace ShortLink.Infra.Data.Repositories
         {
             await _context.Devices.AddAsync(device);
         }
+
         public async Task<ShortUrl> FindUrlByToken(string token)
         {
             return await _context.ShortUrls.AsQueryable().SingleOrDefaultAsync(u => u.Token == token);
         }
+
         public async Task AddRequsetUrl(RequestUrl requestUrl)
         {
             await _context.RequestUrls.AddAsync(requestUrl);

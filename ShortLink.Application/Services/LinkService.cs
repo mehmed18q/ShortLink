@@ -19,8 +19,6 @@ namespace ShortLink.Application.Services
         {
             _linkRepository = linkRepository;
         }
-
-
         #endregion
 
         #region link
@@ -33,12 +31,13 @@ namespace ShortLink.Application.Services
             shortUrl.Value = new Uri($"https://localhost:44344/{shortUrl.Token}");
             return shortUrl;
         }
+
         public async Task<UrlRequestResult> AddLink(ShortUrl url)
         {
             if (url == null) return UrlRequestResult.Error;
 
             await _linkRepository.AddLink(url);
-            await _linkRepository.SaveChange();
+            //await _linkRepository.SaveChange();
 
             return UrlRequestResult.Success;
         }
@@ -56,7 +55,6 @@ namespace ShortLink.Application.Services
                 CreateDate = DateTime.Now
             };
             await _linkRepository.AddOs(Os);
-
 
             var device = new ShortLink.Domain.Models.Link.Device
             {
@@ -76,7 +74,7 @@ namespace ShortLink.Application.Services
                 CreateDate = DateTime.Now
             };
             await _linkRepository.AddBrower(brower);
-            await _linkRepository.SaveChange();
+            //await _linkRepository.SaveChange();
         }
 
         public async Task<ShortUrl> FindUrlByToken(string token)
@@ -97,7 +95,6 @@ namespace ShortLink.Application.Services
                 };
                 await _linkRepository.AddRequsetUrl(requestUrl);
                 await _linkRepository.SaveChange();
-
             }
         }
 
@@ -105,8 +102,6 @@ namespace ShortLink.Application.Services
         {
             return await _linkRepository.GetAllLink();
         }
-
-
         #endregion
     }
 }

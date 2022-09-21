@@ -15,6 +15,7 @@ namespace ShortLink.Web.Controllers
             _linkService = linkService;
         }
         #endregion
+
         public IActionResult Index()
         {
             return View();
@@ -42,16 +43,13 @@ namespace ShortLink.Web.Controllers
                             ViewBag.UserShortLink = shortUrl.Value.ToString();
                             break;
                     }
-
                 }
                 else
                 {
-                    TempData[ErrorMessage] = "If You Dont Uss Http Or Https In Your Link Please Use Them";
+                    TempData[ErrorMessage] = "If You Dont Use Http Or Https In Your Link Please Use Them";
                     return View(urlRequest);
                 }
-
             }
-
             return View(urlRequest);
         }
     }
